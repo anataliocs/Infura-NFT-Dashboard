@@ -13,7 +13,7 @@ export const BrandIcon = props => (
 export const Brand = () => (
   <NavbarBrand tag={Link} to="/" className="brand-logo">
     <BrandIcon />
-    <span className="brand-title"> InfuraNftDashboard</span>
+    <span className="brand-title"> Infura NFT API Dashboard</span>
     <span className="navbar-version">{VERSION}</span>
   </NavbarBrand>
 );

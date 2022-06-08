@@ -16,8 +16,9 @@ export const Home = () => {
         <span className="hipster rounded" />
       </Col>
       <Col md="9">
-        <h2>Welcome, Java Hipster!</h2>
-        <p className="lead">This is your homepage</p>
+        <Link to="/infura"><h2>Infura NFT API Dashboard</h2></Link>
+        <br/>
+
         {account?.login ? (
           <div>
             <Alert color="success">You are logged in as user {account.login}.</Alert>
