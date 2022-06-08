@@ -1,6 +1,7 @@
 package io.infura.nftdashboard.service;
 
 import io.infura.nftdashboard.service.dto.NftMetadataResponse;
+import io.infura.nftdashboard.service.dto.OwnedNftsResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -19,7 +20,7 @@ public class NftService {
     public String getNftCollectionMetadata() {
 
         final UriComponents uri = getBaseUriBuilder().path("/networks/{chainid}/nfts/{tokenAddress}")
-            .buildAndExpand("1","0xab5801a7d398351b8be11c439e05c5b3259aec9b");
+            .buildAndExpand("1", "0xab5801a7d398351b8be11c439e05c5b3259aec9b");
 
         System.out.println("uri = " + uri.toUriString());
 
@@ -29,9 +30,27 @@ public class NftService {
     public NftMetadataResponse getNftMetadata() {
 
         final UriComponents uri = getBaseUriBuilder().path("/networks/{chainid}/nfts/{tokenAddress}/tokens/{tokenId}")
-            .buildAndExpand("1","0xa9cb55d05d3351dcd02dd5dc4614e764ce3e1d6e", "7421");
+            .buildAndExpand("1", "0xa9cb55d05d3351dcd02dd5dc4614e764ce3e1d6e", "7421");
 
         return restTemplate.getForObject(uri.toUri(), NftMetadataResponse.class);
+    }
+
+    public OwnedNftsResponse getNftsOwnedByAccount() {
+
+        final UriComponents uri = getBaseUriBuilder()
+            .path("/networks/{chainid}/accounts/{accountAddress}/assets/nfts")
+            .buildAndExpand("1", "0xa9cb55d05d3351dcd02dd5dc4614e764ce3e1d6e");
+
+        return restTemplate.getForObject(uri.toUri(), OwnedNftsResponse.class);
+    }
+
+    public OwnedNftsResponse getNftsCreatedByCollection() {
+
+        final UriComponents uri = getBaseUriBuilder()
+            .path("/networks/{chainid}/nfts/{tokenAddress}/tokens")
+            .buildAndExpand("1", "0xa9cb55d05d3351dcd02dd5dc4614e764ce3e1d6e");
+
+        return restTemplate.getForObject(uri.toUri(), OwnedNftsResponse.class);
     }
 
     private static UriComponentsBuilder getBaseUriBuilder() {
