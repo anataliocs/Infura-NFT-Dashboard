@@ -1,6 +1,7 @@
 package io.infura.nftdashboard.service;
 
 import io.infura.nftdashboard.service.dto.NftMetadataResponse;
+import io.infura.nftdashboard.service.dto.NftsCreatedByCollectionResponse;
 import io.infura.nftdashboard.service.dto.OwnedNftsResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -44,13 +45,13 @@ public class NftService {
         return restTemplate.getForObject(uri.toUri(), OwnedNftsResponse.class);
     }
 
-    public OwnedNftsResponse getNftsCreatedByCollection() {
+    public NftsCreatedByCollectionResponse getNftsCreatedByCollection() {
 
         final UriComponents uri = getBaseUriBuilder()
             .path("/networks/{chainid}/nfts/{tokenAddress}/tokens")
             .buildAndExpand("1", "0xa9cb55d05d3351dcd02dd5dc4614e764ce3e1d6e");
 
-        return restTemplate.getForObject(uri.toUri(), OwnedNftsResponse.class);
+        return restTemplate.getForObject(uri.toUri(), NftsCreatedByCollectionResponse.class);
     }
 
     private static UriComponentsBuilder getBaseUriBuilder() {

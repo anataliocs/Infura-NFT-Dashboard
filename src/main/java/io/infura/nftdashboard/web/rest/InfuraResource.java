@@ -2,6 +2,7 @@ package io.infura.nftdashboard.web.rest;
 
 import io.infura.nftdashboard.service.NftService;
 import io.infura.nftdashboard.service.dto.NftMetadataResponse;
+import io.infura.nftdashboard.service.dto.NftsCreatedByCollectionResponse;
 import io.infura.nftdashboard.service.dto.OwnedNftsResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -35,5 +36,11 @@ public class InfuraResource {
     @ResponseStatus(HttpStatus.OK)
     public OwnedNftsResponse getNftsOwnedByAddress(@PathVariable String accountAddress) {
         return nftService.getNftsOwnedByAccount();
+    }
+
+    @GetMapping("/nfts/{accountAddress}/tokens")
+    @ResponseStatus(HttpStatus.OK)
+    public NftsCreatedByCollectionResponse getNftsCreatedCollection(@PathVariable String tokenAddress) {
+        return nftService.getNftsCreatedByCollection();
     }
 }
