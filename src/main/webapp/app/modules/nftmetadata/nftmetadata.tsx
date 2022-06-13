@@ -4,12 +4,12 @@ import {ValidatedField} from 'react-jhipster';
 import {useForm} from 'react-hook-form';
 
 import {useAppDispatch, useAppSelector} from 'app/config/store';
-import {NftMetadataResponse, getNftMetaData} from "app/modules/infura/infura.reducer";
+import {NftMetadataResponse, getNftMetaData} from "app/modules/nftmetadata/nftmetadata.reducer";
 
 
-export const InfuraPage = () => {
+export const NftMetadataPage = () => {
   const dispatch = useAppDispatch();
-  const nftMetadata: NftMetadataResponse = useAppSelector(state => state.infura.nftMetadata);
+  const nftMetadata: NftMetadataResponse = useAppSelector(state => state.nftmetadata.nftMetadata);
 
   const {
     formState: {errors, touchedFields},
@@ -100,4 +100,4 @@ export const InfuraPage = () => {
   );
 };
 
-export default InfuraPage;
+export default NftMetadataPage;

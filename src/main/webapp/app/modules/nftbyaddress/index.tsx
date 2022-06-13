@@ -1,11 +1,11 @@
 import React from 'react';
 
 import ErrorBoundaryRoute from 'app/shared/error/error-boundary-route';
-import Infura from "app/modules/infura/infura";
+import Nftbyaddress from "app/modules/nftbyaddress/nftbyaddress";
 
 const Routes = ({ match }) => (
   <div>
-    <ErrorBoundaryRoute path={`/infura`} component={Infura} />
+    <ErrorBoundaryRoute path={`/nftbyaddress`} component={Nftbyaddress} />
   </div>
 );
 

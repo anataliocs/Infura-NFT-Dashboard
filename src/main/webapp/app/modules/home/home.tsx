@@ -13,12 +13,14 @@ export const Home = () => {
   return (
     <Row>
       <Col md="3" className="pad">
-        <a href="https://dev.consensys-lootbox.mondorobot.com/">
+        <a href="https://prod.consensys-lootbox.mondorobot.com/">
           <img src="content/images/lootbox.png" alt="Logo"/>
         </a>
       </Col>
       <Col md="9">
-        <Link to="/infura"><h2>Infura NFT Metadata</h2></Link>
+        <Link to="/nftmetadata"><h3>NFT Metadata by Collection Address</h3></Link>
+        <br/>
+        <Link to="/nftbyaddress"><h3>NFT Owned by Account Address</h3></Link>
         <br/>
       </Col>
     </Row>

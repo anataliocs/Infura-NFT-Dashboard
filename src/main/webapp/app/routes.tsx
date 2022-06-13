@@ -10,7 +10,8 @@ import PrivateRoute from 'app/shared/auth/private-route';
 import ErrorBoundaryRoute from 'app/shared/error/error-boundary-route';
 import PageNotFound from 'app/shared/error/page-not-found';
 import { AUTHORITIES } from 'app/config/constants';
-import Infura from "app/modules/infura/infura";
+import Nftmetadata from "app/modules/nftmetadata/nftmetadata";
+import Nftbyaddress from "app/modules/nftbyaddress/nftbyaddress";
 
 const loading = <div>loading ...</div>;
 
@@ -23,7 +24,8 @@ const Routes = () => {
   return (
     <div className="view-routes">
       <Switch>
-        <ErrorBoundaryRoute path="/infura" component={Infura} />
+        <ErrorBoundaryRoute path="/nftbyaddress" component={Nftbyaddress} />
+        <ErrorBoundaryRoute path="/nftmetadata" component={Nftmetadata} />
         <ErrorBoundaryRoute path="/login" component={Login} />
         <ErrorBoundaryRoute path="/logout" component={Logout} />
         <PrivateRoute path="/admin" component={Admin} hasAnyAuthorities={[AUTHORITIES.ADMIN]} />

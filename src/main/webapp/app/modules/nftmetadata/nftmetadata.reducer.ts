@@ -1,5 +1,4 @@
 import axios, {AxiosResponse} from 'axios';
-import {Storage} from 'react-jhipster';
 import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {serializeAxiosError} from '../../shared/reducers/reducer.utils';
 
@@ -7,7 +6,7 @@ const initialState = {
   nftMetadata: {}
 };
 
-export type InfuraState = Readonly<typeof initialState>;
+export type NftMetadataState = Readonly<typeof initialState>;
 
 export interface NftMetadataResponse {
   contract : string;
@@ -25,9 +24,9 @@ export const getNftMetaData = createAsyncThunk('infura/getNftMetadata', async (t
     serializeError: serializeAxiosError,
   });
 
-export const InfuraSlice = createSlice({
+export const NftMetadataSlice = createSlice({
   name: 'nftMetadata',
-  initialState: initialState as InfuraState,
+  initialState: initialState as NftMetadataState,
   reducers: {
     reset() {
       return initialState;
@@ -40,7 +39,7 @@ export const InfuraSlice = createSlice({
   }
 });
 
-export const {reset} = InfuraSlice.actions;
+export const {reset} = NftMetadataSlice.actions;
 
 // Reducer
-export default InfuraSlice.reducer;
+export default NftMetadataSlice.reducer;
