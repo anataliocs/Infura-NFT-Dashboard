@@ -29,7 +29,7 @@ public class InfuraResource {
     @GetMapping("/nfts/{tokenAddress}/tokens/{tokenId}")
     @ResponseStatus(HttpStatus.OK)
     public NftMetadataResponse getNftMetadata(@PathVariable String tokenAddress, @PathVariable String tokenId) {
-        return nftService.getNftMetadata();
+        return nftService.getNftMetadata(tokenAddress, tokenId);
     }
 
     @GetMapping("/nfts/{accountAddress}")

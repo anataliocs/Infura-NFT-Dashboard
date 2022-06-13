@@ -4,7 +4,7 @@ import {ValidatedField} from 'react-jhipster';
 import {useForm} from 'react-hook-form';
 
 import {useAppDispatch, useAppSelector} from 'app/config/store';
-import {NftMetadataResponse, getInfura} from "app/modules/infura/infura.reducer";
+import {NftMetadataResponse, getNftMetaData} from "app/modules/infura/infura.reducer";
 
 
 export const InfuraPage = () => {
@@ -15,15 +15,15 @@ export const InfuraPage = () => {
     formState: {errors, touchedFields},
   } = useForm({mode: 'onTouched'});
 
-  const handleBlockByNumberSubmit = (event) => {
+  const handleNftByAddress = (event) => {
     event.preventDefault();
-    dispatch(getInfura(event.target[0].value));
+    dispatch(getNftMetaData(event.target[0].value));
   };
 
-  const buttonHandleBlockByNumber = (tokenAddress: string) =>
+  const buttonHandleNftByAddress = (tokenAddress: string) =>
     (event: React.MouseEvent<HTMLButtonElement>) => {
       event.preventDefault();
-      dispatch(getInfura(tokenAddress));
+      dispatch(getNftMetaData(tokenAddress));
     };
 
   return (
@@ -32,7 +32,7 @@ export const InfuraPage = () => {
         <h2>Infura NFT Dashboard</h2>
 
         <p className="lead">View the FIRST minted NFT/Metadata in Popular Collections</p>
-        <Form onSubmit={handleBlockByNumberSubmit}>
+        <Form onSubmit={handleNftByAddress}>
 
           <ValidatedField
             name="tokenAddress"
@@ -53,48 +53,23 @@ export const InfuraPage = () => {
         </Form>
 
         <br/>
-        <p className="lead">Popular NFT Collections!</p>
+        <p className="lead">Popular NFT Collections on Ethereum!</p>
 
         <ButtonGroup aria-label="Basic example">
 
-          <Button color="primary" onClick={buttonHandleBlockByNumber("0x0")}>
-            <img src="content/images/axie-infinity.png" alt="Logo"/>
-            Axie Infinity
-          </Button>
-
-          <Button color="secondary" onClick={buttonHandleBlockByNumber("0x30D40")}>
+          <Button color="secondary" onClick={buttonHandleNftByAddress("0xfEb52CBf71B9aDAC957c6f948a6Cf9980ac8c907")}>
             <img src="content/images/decentraland.png" alt="Logo"/>
             Decentraland
           </Button>
 
-          <Button color="info" onClick={buttonHandleBlockByNumber("0x118C30")}>
+          <Button color="info" onClick={buttonHandleNftByAddress("0xb47e3cd837dDF8e4c57F05d70Ab865de6e193BBB")}>
             <img src="content/images/cryptopunks.png" alt="Logo"/>
             CryptoPunks
           </Button>
 
-          <Button color="light" onClick={buttonHandleBlockByNumber("0x1D4C00")}>
-            <img src="content/images/gods-unchained-icon.png" alt="Logo"/>
-            Gods Unchained
-          </Button>
-
-          <Button color="warning" onClick={buttonHandleBlockByNumber("0x259518")}>
+          <Button color="warning" onClick={buttonHandleNftByAddress("0xf17131a4C85E8A75Ba52B3F91cE8C32f6f163924")}>
             <img src="content/images/the-sandbox.png" alt="Logo"/>
             The Sandbox
-          </Button>
-
-          <Button color="danger" onClick={buttonHandleBlockByNumber("0x28D138")}>
-            <img src="content/images/nba-topshot.png" alt="Logo"/>
-            NBA TopShot
-          </Button>
-
-          <Button color="danger" onClick={buttonHandleBlockByNumber("0x28D138")}>
-            <img src="content/images/bayc.png" alt="Logo"/>
-            Bored Ape Yacht Club
-          </Button>
-
-          <Button color="danger" onClick={buttonHandleBlockByNumber("0x28D138")}>
-            <img src="content/images/remarkablewomen.png" alt="Logo"/>
-            Remarkable Women
           </Button>
         </ButtonGroup>
 

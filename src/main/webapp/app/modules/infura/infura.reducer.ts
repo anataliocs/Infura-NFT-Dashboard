@@ -17,8 +17,8 @@ export interface NftMetadataResponse {
   image : string;
 }
 
-export const getInfura = createAsyncThunk('infura/getNftMetadata', async (tokenAddress: string) => {
-    const response = axios.get<any>(`/api/infura/nft/nfts/0xa9cb55d05d3351dcd02dd5dc4614e764ce3e1d6e/tokens/7421`);
+export const getNftMetaData = createAsyncThunk('infura/getNftMetadata', async (tokenAddress: string) => {
+    const response = axios.get<any>(`/api/infura/nft/nfts/${tokenAddress}/tokens/1`);
     return response;
   },
   {
@@ -34,7 +34,7 @@ export const InfuraSlice = createSlice({
     }
   },
   extraReducers(builder) {
-    builder.addCase(getInfura.fulfilled, (state, action) => {
+    builder.addCase(getNftMetaData.fulfilled, (state, action) => {
       state.nftMetadata = action.payload.data;
     });
   }

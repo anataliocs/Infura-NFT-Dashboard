@@ -28,10 +28,10 @@ public class NftService {
         return restTemplate.getForObject(uri.toUri(), String.class);
     }
 
-    public NftMetadataResponse getNftMetadata() {
+    public NftMetadataResponse getNftMetadata(final String tokenAddress, final String tokenId) {
 
         final UriComponents uri = getBaseUriBuilder().path("/networks/{chainid}/nfts/{tokenAddress}/tokens/{tokenId}")
-            .buildAndExpand("1", "0xa9cb55d05d3351dcd02dd5dc4614e764ce3e1d6e", "7421");
+            .buildAndExpand("1", tokenAddress, tokenId);
 
         return restTemplate.getForObject(uri.toUri(), NftMetadataResponse.class);
     }
