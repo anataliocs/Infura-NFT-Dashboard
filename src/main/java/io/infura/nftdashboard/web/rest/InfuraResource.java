@@ -20,25 +20,25 @@ public class InfuraResource {
         this.nftService = nftService;
     }
 
-    @GetMapping("/nfts/{tokenAddress}")
+    @GetMapping("/{tokenAddress}")
     @ResponseStatus(HttpStatus.OK)
     public String getNftCollectionMetadata(@PathVariable String tokenAddress) {
         return nftService.getNftCollectionMetadata();
     }
 
-    @GetMapping("/nfts/{tokenAddress}/tokens/{tokenId}")
+    @GetMapping("/{tokenAddress}/tokens/{tokenId}")
     @ResponseStatus(HttpStatus.OK)
     public NftMetadataResponse getNftMetadata(@PathVariable String tokenAddress, @PathVariable String tokenId) {
         return nftService.getNftMetadata(tokenAddress, tokenId);
     }
 
-    @GetMapping("/nfts/{accountAddress}")
+    @GetMapping("/{accountAddress}/assets")
     @ResponseStatus(HttpStatus.OK)
     public OwnedNftsResponse getNftsOwnedByAddress(@PathVariable String accountAddress) {
         return nftService.getNftsOwnedByAccount();
     }
 
-    @GetMapping("/nfts/{accountAddress}/tokens")
+    @GetMapping("/{accountAddress}/tokens")
     @ResponseStatus(HttpStatus.OK)
     public NftsCreatedByCollectionResponse getNftsCreatedCollection(@PathVariable String tokenAddress) {
         return nftService.getNftsCreatedByCollection();

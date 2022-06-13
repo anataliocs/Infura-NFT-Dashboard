@@ -31,7 +31,7 @@ export interface OwnedNftAssetMetadata{
 }
 
 export const getNftByAddress = createAsyncThunk('infura/getNftByAddress', async (accountAddress: string) => {
-    const response = axios.get<OwnedNftsResponse>(`/api/infura/nft/nfts/${accountAddress}`);
+    const response = axios.get<OwnedNftsResponse>(`/api/infura/nft/${accountAddress}/assets`);
     return response;
   },
   {

@@ -17,7 +17,7 @@ export interface NftMetadataResponse {
 }
 
 export const getNftMetaData = createAsyncThunk('infura/getNftMetadata', async (tokenAddress: string) => {
-    const response = axios.get<any>(`/api/infura/nft/nfts/${tokenAddress}/tokens/1`);
+    const response = axios.get<NftMetadataResponse>(`/api/infura/nft/${tokenAddress}/tokens/1`);
     return response;
   },
   {
