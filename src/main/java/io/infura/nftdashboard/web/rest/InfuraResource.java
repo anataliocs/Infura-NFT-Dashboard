@@ -35,7 +35,7 @@ public class InfuraResource {
     @GetMapping("/{accountAddress}/assets")
     @ResponseStatus(HttpStatus.OK)
     public OwnedNftsResponse getNftsOwnedByAddress(@PathVariable String accountAddress) {
-        return nftService.getNftsOwnedByAccount();
+        return nftService.getNftsOwnedByAccount(accountAddress);
     }
 
     @GetMapping("/{accountAddress}/tokens")

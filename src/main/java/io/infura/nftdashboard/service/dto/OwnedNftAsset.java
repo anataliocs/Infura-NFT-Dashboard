@@ -1,5 +1,8 @@
 package io.infura.nftdashboard.service.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class OwnedNftAsset {
 
     private String contract;

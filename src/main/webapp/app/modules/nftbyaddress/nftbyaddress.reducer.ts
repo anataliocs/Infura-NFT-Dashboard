@@ -14,6 +14,7 @@ export interface OwnedNftsResponse {
   total : string;
   account : string;
   type : string;
+  assets : OwnedNftsAsset[];
 }
 
 export interface OwnedNftsAsset{
@@ -21,13 +22,15 @@ export interface OwnedNftsAsset{
   tokenId : string;
   supply : string;
   type : string;
+  metadata : OwnedNftAssetMetadata;
 }
 
 export interface OwnedNftAssetMetadata{
   name : string;
   description : string;
-  external_link : string;
+  externalLink : string;
   image : string;
+  animationUrl : string;
 }
 
 export const getNftByAddress = createAsyncThunk('infura/getNftByAddress', async (accountAddress: string) => {

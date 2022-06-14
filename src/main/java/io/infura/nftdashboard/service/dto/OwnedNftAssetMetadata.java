@@ -1,11 +1,17 @@
 package io.infura.nftdashboard.service.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class OwnedNftAssetMetadata {
 
     private String name;
     private String description;
-    private String external_link;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String externalLink;
     private String image;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String animationUrl;
 
     public String getName() {
@@ -26,21 +32,21 @@ public class OwnedNftAssetMetadata {
         return this;
     }
 
-    public String getExternal_link() {
-        return external_link;
-    }
-
-    public OwnedNftAssetMetadata setExternal_link(String external_link) {
-        this.external_link = external_link;
-        return this;
-    }
-
     public String getImage() {
         return image;
     }
 
     public OwnedNftAssetMetadata setImage(String image) {
         this.image = image;
+        return this;
+    }
+
+    public String getExternalLink() {
+        return externalLink;
+    }
+
+    public OwnedNftAssetMetadata setExternalLink(String externalLink) {
+        this.externalLink = externalLink;
         return this;
     }
 

@@ -36,11 +36,11 @@ public class NftService {
         return restTemplate.getForObject(uri.toUri(), NftMetadataResponse.class);
     }
 
-    public OwnedNftsResponse getNftsOwnedByAccount() {
+    public OwnedNftsResponse getNftsOwnedByAccount(String accountAddress) {
 
         final UriComponents uri = getBaseUriBuilder()
             .path("/networks/{chainid}/accounts/{accountAddress}/assets/nfts")
-            .buildAndExpand("1", "0xa9cb55d05d3351dcd02dd5dc4614e764ce3e1d6e");
+            .buildAndExpand("1", accountAddress);
 
         return restTemplate.getForObject(uri.toUri(), OwnedNftsResponse.class);
     }
@@ -56,6 +56,6 @@ public class NftService {
 
     private static UriComponentsBuilder getBaseUriBuilder() {
         return UriComponentsBuilder
-            .fromHttpUrl("https://staging.nft.consensys-solutions.net");
+            .fromHttpUrl("https://staging-origin.nft.consensys-solutions.net");
     }
 }

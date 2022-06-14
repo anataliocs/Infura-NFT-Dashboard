@@ -1,15 +1,29 @@
 import React, {useEffect} from 'react';
-import {Button, Col, Row, Form, ButtonGroup, ListGroup, ListGroupItem} from 'reactstrap';
+import {
+  Button,
+  Col,
+  Row,
+  Form,
+  ButtonGroup,
+  ListGroup,
+  ListGroupItem,
+  Card,
+  CardBody,
+  CardTitle,
+  CardSubtitle,
+  CardImg
+} from 'reactstrap';
 import {ValidatedField} from 'react-jhipster';
 import {useForm} from 'react-hook-form';
 
 import {useAppDispatch, useAppSelector} from 'app/config/store';
-import {OwnedNftsResponse, getNftByAddress} from "app/modules/nftbyaddress/nftbyaddress.reducer";
+import {OwnedNftsResponse, getNftByAddress, OwnedNftsAsset} from "app/modules/nftbyaddress/nftbyaddress.reducer";
 
 
 export const NftByAddressPage = () => {
   const dispatch = useAppDispatch();
   const nftbyaddress: OwnedNftsResponse = useAppSelector(state => state.nftbyaddress.nftByAddress);
+  const ownedNftAssets: OwnedNftsAsset[] = useAppSelector(state => state.nftbyaddress.nftByAddress.assets);
 
   const {
     formState: {errors, touchedFields},
@@ -79,17 +93,56 @@ export const NftByAddressPage = () => {
             <Col md="6">
 
               <ListGroup>
-                <ListGroupItem><strong>NFT Contract:</strong> {nftbyaddress.account}</ListGroupItem>
-                <ListGroupItem><strong>NFT Token ID:</strong> {nftbyaddress.network}</ListGroupItem>
-                <ListGroupItem><strong>NFT Name:</strong> {nftbyaddress.type}</ListGroupItem>
-                <ListGroupItem><strong>NFT Description:</strong> {nftbyaddress.total}</ListGroupItem>
-                <ListGroupItem><strong>NFT Description:</strong> {nftbyaddress.pageNumber}</ListGroupItem>
+                <ListGroupItem><strong>Account Address:</strong> {nftbyaddress.account}</ListGroupItem>
+                <ListGroupItem><strong>Network:</strong> {nftbyaddress.network}</ListGroupItem>
+                <ListGroupItem><strong>Asset Type:</strong> {nftbyaddress.type}</ListGroupItem>
+                <ListGroupItem><strong>Total NFTs:</strong> {nftbyaddress.total}</ListGroupItem>
+                <ListGroupItem><strong>Page #</strong> {nftbyaddress.pageNumber}</ListGroupItem>
               </ListGroup>
 
             </Col>
           </Row>
         ) : <div></div>
         }
+
+        <br/>
+        <hr/>
+
+        {ownedNftAssets ? (
+          <Row>
+            <Col md="9">
+
+              {ownedNftAssets
+                .filter(item => item.metadata)
+                .filter(item => item.metadata.image)
+                .filter(item => !item.metadata.image.match('webp'))
+                .map((item) =>
+
+
+                <Card key={item.tokenId}>
+                  <CardImg
+                    alt={item.metadata ? item.metadata.description : 'Placeholder'}
+                    src={item.metadata.image}
+                    top
+                    width="100%"
+                  />
+                  <CardBody>
+                    <CardTitle tag="h5">
+                      {item.metadata ? item.metadata.name : 'placeholder'}
+                    </CardTitle>
+                    <CardSubtitle
+                      className="mb-2 text-muted"
+                      tag="h6"
+                    >
+                      {item.metadata ? item.metadata.description : 'placeholder'}
+                    </CardSubtitle>
+                  </CardBody>
+                </Card>
+              )}
+
+            </Col>
+          </Row>
+        ) : <div></div>}
 
       </Col>
     </Row>
