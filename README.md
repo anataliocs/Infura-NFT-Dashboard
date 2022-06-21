@@ -2,6 +2,20 @@
 
 This full-stack application demonstrates some potential use-cases of the Infura NFT-API
 
+[Sign up for a free account](https://infura.io/register)
+
+## Infura NFT-API Resources
+
+Check out these resources for more information.
+
+- [Infura NFT API Swagger docs](https://docs.api.infura.io/nft/)
+- [Infura Web Site](https://infura.io)
+- [Sample Reference App](https://github.com/anataliocs/Infura-NFT-Dashboard)
+- [Truffle Box](https://github.com/truffle-box/nft-api-box)
+- [Infura NFT API SDK](https://www.npmjs.com/package/@infura/sdk)
+- [Infura NFT API Docs](https://docs.infura.io/infura/features/nft-sdk/how-to)
+- [Infura Discord](https://discord.com/invite/vbx6jy6XC8)
+
 ## Project Structure
 
 Node is required for generation and recommended for development. `package.json` is always generated for a better development experience with prettier, commit hooks, scripts and so on.
