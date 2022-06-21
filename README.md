@@ -1,6 +1,9 @@
 # Infura NFT API Dashboard
 
-This full-stack application demonstrates some potential use-cases of the Infura NFT-API
+This full-stack application demonstrates some potential use-cases for the Infura Read NFT-API such as:
+
+- Displaying the First NFT ever minted in a collection
+- Displaying all NFTs owned by a wallet
 
 [Sign up for a free account](https://infura.io/register)
 
@@ -15,6 +18,8 @@ Check out these resources for more information.
 - [Infura NFT API SDK](https://www.npmjs.com/package/@infura/sdk)
 - [Infura NFT API Docs](https://docs.infura.io/infura/features/nft-sdk/how-to)
 - [Infura Discord](https://discord.com/invite/vbx6jy6XC8)
+
+Check out the [Infura Lootbox NFT API Coding Challenge](https://lootbox.consensys.net)
 
 ## Project Structure
 
