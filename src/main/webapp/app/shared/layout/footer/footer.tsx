@@ -18,7 +18,7 @@ const Footer = () => (
       <Col md="4">
         <p>Powered by &nbsp;<a href="https://infura.io"> <img src="content/images/logo-infura2.png" alt="Logo"/></a></p>
         <br/>
-        <p>Claim your <a href="https://prod.consensys-lootbox.mondorobot.com/">Lootbox</a></p>
+        <p>Claim your <a href="https://lootbox.consensys.net/">Lootbox</a></p>
       </Col>
       <Col md="4">
         <p></p>

@@ -5,14 +5,18 @@ This full-stack application demonstrates some potential use-cases for the Infura
 - Displaying the First NFT ever minted in a collection
 - Displaying all NFTs owned by a wallet
 
-[Sign up for a free account](https://infura.io/register)
+[Sign up for a free Infura account](https://infura.io/register)
+
+[Sign up for the BETA](https://infura.io/resources/apis/nft-api-beta-signup)
+
 
 ## Infura NFT-API Resources
 
-Check out these resources for more information.
+Check out these resources for more information:
 
+- [Infura NFT API Promo Video](https://youtu.be/ERV_FbCDBIQ)
 - [Infura NFT API Swagger docs](https://docs.api.infura.io/nft/)
-- [Infura Web Site](https://infura.io)
+- [Infura Web Site](https://infura.io/use-cases/nft)
 - [Sample Reference App](https://github.com/anataliocs/Infura-NFT-Dashboard)
 - [Truffle Box](https://github.com/truffle-box/nft-api-box)
 - [Infura NFT API SDK](https://www.npmjs.com/package/@infura/sdk)
