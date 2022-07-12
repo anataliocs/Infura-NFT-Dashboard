@@ -56,6 +56,6 @@ public class NftService {
 
     private static UriComponentsBuilder getBaseUriBuilder() {
         return UriComponentsBuilder
-            .fromHttpUrl("https://staging-origin.nft.consensys-solutions.net");
+            .fromHttpUrl("https://nft.api.infura.io");
     }
 }
