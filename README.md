@@ -5,10 +5,11 @@ This full-stack application demonstrates some potential use-cases for the Infura
 - Displaying the First NFT ever minted in a collection
 - Displaying all NFTs owned by a wallet
 
-[Sign up for a free Infura account](https://infura.io/register)
+[Sign up for a free Infura account](https://infura.io/register?utm_source=github&utm_medium=devcommunity&utm_campaign=2022_Jul_devrel-sample-projects_content_content)
 
 [Sign up for the BETA](https://infura.io/resources/apis/nft-api-beta-signup)
 
+Have other use-cases you'd like to see?  Open up an [issue on Github!](https://github.com/anataliocs/Infura-NFT-Dashboard/issues)
 
 ## Infura NFT-API Resources
 
@@ -60,6 +61,14 @@ Then run the app using
 
 Then login locally using the canned login: admin/admin
 
+## Connect with the Author
+
+I'm Chris Anatalio and I'm a Platform Advocate at ConsenSys supporting Infura.
+
+TG: @anataliocs
+Discord: Chris Anatalio | Infura#3855
+Twitter: @canatalio
+
 ## Development
 
 Before you can build this project, you must install and configure the following dependencies on your machine:
@@ -90,24 +99,6 @@ Add the `help` flag on any command to see how you can use it. For example, `npm 
 
 The `npm run` command will list all of the scripts available to run for this project.
 
-### PWA Support
-
-JHipster ships with PWA (Progressive Web App) support, and it's turned off by default. One of the main components of a PWA is a service worker.
-
-The service worker initialization code is commented out by default. To enable it, uncomment the following code in `src/main/webapp/index.html`:
-
-```html
-<script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('./service-worker.js').then(function () {
-      console.log('Service Worker Registered');
-    });
-  }
-</script>
-```
-
-Note: [Workbox](https://developers.google.com/web/tools/workbox/) powers JHipster's service worker. It dynamically generates the `service-worker.js` file.
-
 ### Managing dependencies
 
 For example, to add [Leaflet][] library as a runtime dependency of your application, you would run following command:
@@ -126,43 +117,6 @@ Then you would import the JS and CSS files specified in library's installation i
 Note: There are still a few other things remaining to do for Leaflet that we won't detail here.
 
 For further instructions on how to develop with JHipster, have a look at [Using JHipster in development][].
-
-### JHipster Control Center
-
-JHipster Control Center can help you manage and control your application(s). You can start a local control center server (accessible on http://localhost:7419) with:
-
-```
-docker-compose -f src/main/docker/jhipster-control-center.yml up
-```
-
-## Building for production
-
-### Packaging as jar
-
-To build the final jar and optimize the InfuraNftDashboard application for production, run:
-
-```
-./gradlew -Pprod clean bootJar
-```
-
-This will concatenate and minify the client CSS and JavaScript files. It will also modify `index.html` so it references these new files.
-To ensure everything worked, run:
-
-```
-java -jar build/libs/*.jar
-```
-
-Then navigate to [http://localhost:8080](http://localhost:8080) in your browser.
-
-Refer to [Using JHipster in production][] for more details.
-
-### Packaging as war
-
-To package your application as a war in order to deploy it to an application server, run:
-
-```
-./gradlew -Pprod -Pwar clean bootWar
-```
 
 ## Testing
 
