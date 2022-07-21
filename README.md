@@ -25,23 +25,40 @@ Check out these resources for more information:
 
 Check out the [Infura Lootbox NFT API Coding Challenge](https://lootbox.consensys.net)
 
-## Project Structure
+Don't have an Infura account yet?  [Sign up now!](https://infura.io/register?utm_source=github&utm_medium=devcommunity&utm_campaign=2022_Jul_devrel-sample-projects_content_content)
 
-Node is required for generation and recommended for development. `package.json` is always generated for a better development experience with prettier, commit hooks, scripts and so on.
+## Project Config
 
-In the project root, JHipster generates configuration files for tools like git, prettier, eslint, husk, and others that are well known and you can find references in the web.
+You must setup your local project with your Infura Project ID and Secret.  
 
-`/src/*` structure follows default Java structure.
+Ensure you've signed up for the  [NFT API Beta](https://infura.io/resources/apis/nft-api-beta-signup)
 
-- `.yo-rc.json` - Yeoman configuration file
-  JHipster configuration is stored in this file at `generator-jhipster` key. You may find `generator-jhipster-*` for specific blueprints configuration.
-- `.yo-resolve` (optional) - Yeoman conflict resolver
-  Allows to use a specific action when conflicts are found skipping prompts for files that matches a pattern. Each line should match `[pattern] [action]` with pattern been a [Minimatch](https://github.com/isaacs/minimatch#minimatch) pattern and action been one of skip (default if ommited) or force. Lines starting with `#` are considered comments and are ignored.
-- `.jhipster/*.json` - JHipster entity configuration files
+On Mac:
 
-- `npmw` - wrapper to use locally installed npm.
-  JHipster installs Node and npm locally using the build tool by default. This wrapper makes sure npm is installed locally and uses it avoiding some differences different versions can cause. By using `./npmw` instead of the traditional `npm` you can configure a Node-less environment to develop or test your application.
-- `/src/main/docker` - Docker configurations for the application and services that the application depends on
+Create the properties file:
+
+`touch ~/.spring-boot-devtools.properties`
+
+Open the properties file:
+
+`vi ~/.spring-boot-devtools.properties`
+
+Add the following line to properties file:
+
+```
+infura.nft.projectid=[Project ID]
+infura.nft.projectsecret=[Project secret]
+```
+
+On Windows:
+
+Add `infura.nft.projectid` and `infura.nft.projectsecret` to `src/main/resources/config/application-dev.yml`
+
+Then run the app using
+
+`./gradlew`
+
+Then login locally using the canned login: admin/admin
 
 ## Development
 
