@@ -23,8 +23,6 @@ public class NftService {
         final UriComponents uri = getBaseUriBuilder().path("/networks/{chainid}/nfts/{tokenAddress}")
             .buildAndExpand("1", "0xab5801a7d398351b8be11c439e05c5b3259aec9b");
 
-        System.out.println("uri = " + uri.toUriString());
-
         return restTemplate.getForObject(uri.toUri(), String.class);
     }
 
