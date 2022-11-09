@@ -41,7 +41,7 @@ public class InfuraResource {
 
     @GetMapping(value = "/{accountAddress}/tokens", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public NftsCreatedByCollectionResponse getNftsCreatedCollection(@PathVariable String tokenAddress) {
-        return nftService.getNftsCreatedByCollection();
+    public NftsCreatedByCollectionResponse getNftsCreatedCollection(@PathVariable String accountAddress) {
+        return nftService.getNftsCreatedByCollection(accountAddress);
     }
 }

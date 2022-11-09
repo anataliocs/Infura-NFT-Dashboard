@@ -1,15 +1,22 @@
 import React, {useEffect} from 'react';
-import {Button, Col, Row, Form, ButtonGroup, ListGroup, ListGroupItem} from 'reactstrap';
+import {Button, Col, Row, Form, ButtonGroup, ListGroup, ListGroupItem, Card, CardImg, CardBody, CardTitle, CardSubtitle} from 'reactstrap';
 import {ValidatedField} from 'react-jhipster';
 import {useForm} from 'react-hook-form';
 
 import {useAppDispatch, useAppSelector} from 'app/config/store';
-import {NftMetadataResponse, getNftMetaData} from "app/modules/nftmetadata/nftmetadata.reducer";
+import {
+  NftMetadataResponse,
+  getNftMetaData,
+  NftsCreatedByCollectionResponse
+} from "app/modules/nftmetadata/nftmetadata.reducer";
+import NftCarousel from "app/shared/layout/carousel/nftCarousel";
 
 
 export const NftMetadataPage = () => {
   const dispatch = useAppDispatch();
-  const nftMetadata: NftMetadataResponse = useAppSelector(state => state.nftmetadata.nftMetadata);
+  const nftResponse: NftsCreatedByCollectionResponse = useAppSelector(state => state.nftmetadata.nftMetadata);
+  const nftMetadata: NftMetadataResponse[] = useAppSelector(state => state.nftmetadata.nftMetadata.assets);
+
 
   const {
     formState: {errors, touchedFields},
@@ -77,24 +84,56 @@ export const NftMetadataPage = () => {
         <hr/>
         <h3>NFT Metadata </h3>
         {nftMetadata ? (
-          <Row>
-            <Col md="6">
 
-              <ListGroup>
-                <ListGroupItem><strong>NFT Contract:</strong> {nftMetadata.contract}</ListGroupItem>
-                <ListGroupItem><strong>NFT Token ID:</strong> {nftMetadata.tokenId}</ListGroupItem>
-                <ListGroupItem><strong>NFT Name:</strong> {nftMetadata.name}</ListGroupItem>
-                <ListGroupItem><strong>NFT Description:</strong> {nftMetadata.description}</ListGroupItem>
-              </ListGroup>
+          nftMetadata
+            .filter(item => item.metadata)
+            .filter(item => item.metadata.image)
+            .filter(item => !item.metadata.image.match('webp'))
+                .map((item) =>
+                    <Row key={item.tokenId}>
+                    <Col md="6">
 
-            </Col>
-            <Col md="6">
-              <img alt="NFT Image" className="media-object"
-                   src={nftMetadata.image}/>
-            </Col>
-          </Row>
-        ) : <div></div>
-        }
+                  <ListGroup>
+                    <ListGroupItem><strong>NFT Contract:</strong> {item.contract}</ListGroupItem>
+                    <ListGroupItem><strong>NFT Token ID:</strong> {item.tokenId}</ListGroupItem>
+                    <ListGroupItem><strong>NFT Name:</strong> {item.metadata.name}</ListGroupItem>
+                    <ListGroupItem><strong>NFT Description:</strong> {item.metadata.description}</ListGroupItem>
+                  </ListGroup>
+                    </Col>
+
+                <Col md="6">
+                  <img alt="NFT Image" className="media-object"
+                       src={"https://chris-anatalio.infura-ipfs.io/ipfs/" + item.metadata.ipfsHash}/>
+
+                  <Card key={item.tokenId}>
+                    <CardImg
+                      alt={item.metadata ? item.metadata.description : 'Placeholder'}
+                      src={item.metadata.image}
+                      top
+                      width="100%"
+                    />
+                    <CardBody>
+                      <CardTitle tag="h5">
+                        {item.metadata ? item.metadata.name : 'placeholder'}
+                      </CardTitle>
+                      <CardSubtitle
+                        className="mb-2 text-muted"
+                        tag="h6"
+                      >
+                        {item.metadata ? item.metadata.description : 'placeholder'}
+                      </CardSubtitle>
+                    </CardBody>
+                  </Card>
+
+                </Col>
+                </Row>
+                )
+
+              ) : <div></div>}
+
+        <div>
+          <NftCarousel activeIndex={1} animating={false}></NftCarousel>
+        </div>
       </Col>
     </Row>
   );

@@ -13,6 +13,7 @@ public class OwnedNftAssetMetadata {
     private String image;
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private String animationUrl;
+    private String ipfsHash;
 
     public String getName() {
         return name;
@@ -56,6 +57,15 @@ public class OwnedNftAssetMetadata {
 
     public OwnedNftAssetMetadata setAnimationUrl(String animationUrl) {
         this.animationUrl = animationUrl;
+        return this;
+    }
+
+    public String getIpfsHash() {
+        return ipfsHash;
+    }
+
+    public OwnedNftAssetMetadata setIpfsHash(String ipfsHash) {
+        this.ipfsHash = ipfsHash;
         return this;
     }
 }
