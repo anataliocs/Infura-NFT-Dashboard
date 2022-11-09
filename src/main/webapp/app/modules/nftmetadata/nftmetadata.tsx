@@ -58,7 +58,7 @@ export const NftMetadataPage = () => {
               isTouched={touchedFields.tokenAddress}
             />
 
-            <Button size="small" color="primary" type="submit" data-cy="submit">
+            <Button size="sm" color="primary" type="submit" data-cy="submit">
               Search
             </Button>
 
