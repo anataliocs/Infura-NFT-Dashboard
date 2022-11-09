@@ -6,6 +6,7 @@ import { Col, Row } from 'reactstrap';
 
 const Footer = () => (
   <div className="footer page-content">
+    <hr/><br/>
     <Row>
       <Col md="9">
         <hr/>
@@ -16,9 +17,8 @@ const Footer = () => (
         <p></p>
       </Col>
       <Col md="4">
-        <p>Powered by &nbsp;<a href="https://infura.io"> <img src="content/images/logo-infura2.png" alt="Logo"/></a></p>
+        <p>Powered by the Infura NFT API</p>
         <br/>
-        <p>Claim your <a href="https://lootbox.consensys.net/">Lootbox</a></p>
       </Col>
       <Col md="4">
         <p></p>
