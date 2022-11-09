@@ -1,12 +1,9 @@
 import React from 'react';
 
 import {
-  Carousel,
-  CarouselItem,
-  CarouselControl,
-  CarouselIndicators,
-  CarouselCaption
+  UncontrolledCarousel,
 } from 'reactstrap';
+import {getNftMetaData, NftMetadataResponse} from "app/modules/nftmetadata/nftmetadata.reducer";
 
 const items = [
   {
@@ -29,66 +26,24 @@ const items = [
 export interface INftCarousel {
   activeIndex: number;
   animating: boolean;
+  nftList: NftMetadataResponse[];
 }
+
+let nfts;
 
 const NftCarousel = (props: INftCarousel) => {
 
-  let activeIndex = props.activeIndex;
-  let animating = props.animating;
-
-  const onExiting = () => {
-    animating = true;
-  }
-
-  const onExited = () =>  {
-    animating = false;
-  }
-
-  const next = () =>  {
-        if (animating) return;
-        const nextIndex = activeIndex === items.length - 1 ? 0 : activeIndex + 1;
-        activeIndex = nextIndex;
-  }
-
-  const previous = () =>  {
-        if (animating) return;
-        const nextIndex = activeIndex === 0 ? items.length - 1 : activeIndex - 1;
-        activeIndex = nextIndex;
-  }
-
-  const goToIndex = (newIndex) => {
-        if (animating) return;
-        activeIndex = newIndex;
-
-  }
-
-  const slides = items.map((item) => {
-    return (
-      <CarouselItem
-        onExiting={onExiting}
-        onExited={onExited}
-        key={item.src}
-      >
-        <img src={item.src} alt={item.altText} />
-        <CarouselCaption captionText={item.caption} captionHeader={item.caption} />
-      </CarouselItem>
-    );
-  });
+  const getNfts = () => {
+    return props.nftList.map(nft => ({
+      src: nft.metadata.image,
+      altText: nft.metadata.name,
+      caption: nft.metadata.description
+    }));
+  };
 
   return (
     <div>
-
-        <Carousel
-          activeIndex={activeIndex}
-          next={next}
-          previous={previous}
-        >
-          <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={goToIndex} />
-          {slides}
-          <CarouselControl direction="prev" directionText="Previous" onClickHandler={previous} />
-          <CarouselControl direction="next" directionText="Next" onClickHandler={next} />
-        </Carousel>
-
+        <UncontrolledCarousel items={getNfts()} />
     </div>
   );
 };

@@ -17,7 +17,6 @@ export const NftMetadataPage = () => {
   const nftResponse: NftsCreatedByCollectionResponse = useAppSelector(state => state.nftmetadata.nftMetadata);
   const nftMetadata: NftMetadataResponse[] = useAppSelector(state => state.nftmetadata.nftMetadata.assets);
 
-
   const {
     formState: {errors, touchedFields},
   } = useForm({mode: 'onTouched'});
@@ -59,81 +58,11 @@ export const NftMetadataPage = () => {
 
         </Form>
 
-        <br/>
-        <p className="lead">Popular NFT Collections on Ethereum!</p>
-
-        <ButtonGroup aria-label="Basic example">
-
-          <Button color="secondary" onClick={buttonHandleNftByAddress("0xfEb52CBf71B9aDAC957c6f948a6Cf9980ac8c907")}>
-            <img src="content/images/decentraland.png" alt="Logo"/>
-            Decentraland
-          </Button>
-
-          <Button color="info" onClick={buttonHandleNftByAddress("0xb47e3cd837dDF8e4c57F05d70Ab865de6e193BBB")}>
-            <img src="content/images/cryptopunks.png" alt="Logo"/>
-            CryptoPunks
-          </Button>
-
-          <Button color="warning" onClick={buttonHandleNftByAddress("0xf17131a4C85E8A75Ba52B3F91cE8C32f6f163924")}>
-            <img src="content/images/the-sandbox.png" alt="Logo"/>
-            The Sandbox
-          </Button>
-        </ButtonGroup>
-
-        <br/>
-        <hr/>
-        <h3>NFT Metadata </h3>
         {nftMetadata ? (
-
-          nftMetadata
-            .filter(item => item.metadata)
-            .filter(item => item.metadata.image)
-            .filter(item => !item.metadata.image.match('webp'))
-                .map((item) =>
-                    <Row key={item.tokenId}>
-                    <Col md="6">
-
-                  <ListGroup>
-                    <ListGroupItem><strong>NFT Contract:</strong> {item.contract}</ListGroupItem>
-                    <ListGroupItem><strong>NFT Token ID:</strong> {item.tokenId}</ListGroupItem>
-                    <ListGroupItem><strong>NFT Name:</strong> {item.metadata.name}</ListGroupItem>
-                    <ListGroupItem><strong>NFT Description:</strong> {item.metadata.description}</ListGroupItem>
-                  </ListGroup>
-                    </Col>
-
-                <Col md="6">
-                  <img alt="NFT Image" className="media-object"
-                       src={"https://chris-anatalio.infura-ipfs.io/ipfs/" + item.metadata.ipfsHash}/>
-
-                  <Card key={item.tokenId}>
-                    <CardImg
-                      alt={item.metadata ? item.metadata.description : 'Placeholder'}
-                      src={item.metadata.image}
-                      top
-                      width="100%"
-                    />
-                    <CardBody>
-                      <CardTitle tag="h5">
-                        {item.metadata ? item.metadata.name : 'placeholder'}
-                      </CardTitle>
-                      <CardSubtitle
-                        className="mb-2 text-muted"
-                        tag="h6"
-                      >
-                        {item.metadata ? item.metadata.description : 'placeholder'}
-                      </CardSubtitle>
-                    </CardBody>
-                  </Card>
-
-                </Col>
-                </Row>
-                )
-
-              ) : <div></div>}
-
         <div>
-          <NftCarousel activeIndex={1} animating={false}></NftCarousel>
+          <NftCarousel activeIndex={1} animating={false} nftList={nftMetadata}></NftCarousel>
         </div>
+        ) : <div></div>}
       </Col>
     </Row>
   );

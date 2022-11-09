@@ -63,7 +63,8 @@ public class NftService {
             .filter(Objects::nonNull)
             .filter(ownedNftAsset -> nonNull(ownedNftAsset.getMetadata()))
             .filter(ownedNftAsset -> nonNull(ownedNftAsset.getMetadata().getImage()))
-            .forEach(ownedNftAsset -> ownedNftAsset.getMetadata().setIpfsHash(ownedNftAsset.getMetadata().getImage().replace("ipfs://", "")));
+            .forEach(ownedNftAsset -> ownedNftAsset.getMetadata()
+                .setIpfsHash(ownedNftAsset.getMetadata().getImage().replace("ipfs://", "")));
 
         return nftsCreatedByCollectionResponse;
     }
