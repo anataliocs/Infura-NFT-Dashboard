@@ -8,16 +8,32 @@ const initialState = {
 
 export type NftMetadataState = Readonly<typeof initialState>;
 
+export interface NftsCreatedByCollectionResponse {
+  pageNumber: string;
+  network: string;
+  total: string;
+  account: string;
+  type: string;
+  assets: NftMetadataResponse[];
+}
+
 export interface NftMetadataResponse {
   contract : string;
   tokenId : string;
+  type : string;
+  metadata : NftMetadataDetailsResponse;
+}
+
+export interface NftMetadataDetailsResponse {
   name : string;
   description : string;
   image : string;
+  animation_url : string;
+  ipfsHash : string;
 }
 
 export const getNftMetaData = createAsyncThunk('infura/getNftMetadata', async (tokenAddress: string) => {
-    const response = axios.get<NftMetadataResponse>(`/api/infura/nft/${tokenAddress}/tokens/1`);
+    const response = axios.get<NftsCreatedByCollectionResponse>(`/api/infura/nft/${tokenAddress}/tokens`);
     return response;
   },
   {
