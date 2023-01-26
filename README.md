@@ -55,6 +55,8 @@ On Windows:
 
 Add `infura.nft.projectid` and `infura.nft.projectsecret` to `src/main/resources/config/application-dev.yml`
 
+## Run the app
+
 Then run the app using
 
 `./gradlew`
