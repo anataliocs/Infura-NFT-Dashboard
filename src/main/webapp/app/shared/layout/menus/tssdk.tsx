@@ -4,7 +4,7 @@ import { DropdownItem } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { NavDropdown } from './menu-components';
 
-const restApiMenuItems = () => (
+const sdkMenuItems = () => (
   <>
     <MenuItem icon="cogs" to="/admin/metrics">
       Transfers by block
@@ -52,10 +52,10 @@ const restApiMenuItems = () => (
   </>
 );
 
-export const RestApiMenu = () => (
-  <NavDropdown icon="users-cog" name="REST API" id="restapi-menu" data-cy="restapiMenu">
-    {restApiMenuItems()}
+export const SdkMenu = () => (
+  <NavDropdown icon="users-cog" name="TS SDK API" id="tssdk-menu" data-cy="tssdkMenu">
+    {sdkMenuItems()}
   </NavDropdown>
 );
 
-export default RestApiMenu;
+export default SdkMenu;

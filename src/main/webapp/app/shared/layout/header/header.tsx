@@ -8,6 +8,7 @@ import LoadingBar from 'react-redux-loading-bar';
 import { Home, Brand } from './header-components';
 import { AdminMenu, AccountMenu } from '../menus';
 import RestApiMenu from "app/shared/layout/menus/restapi";
+import SdkMenu from "app/shared/layout/menus/tssdk";
 
 export interface IHeaderProps {
   isAuthenticated: boolean;
@@ -45,6 +46,7 @@ const Header = (props: IHeaderProps) => {
               <AdminMenu showOpenAPI={props.isOpenAPIEnabled} showDatabase={!props.isInProduction} />
             )*/}
 
+            <SdkMenu />
             <RestApiMenu />
             <AccountMenu isAuthenticated={props.isAuthenticated} />
           </Nav>
