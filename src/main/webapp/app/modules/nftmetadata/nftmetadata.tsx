@@ -49,7 +49,7 @@ export const NftMetadataPage = () => {
             <ValidatedField
               name="tokenAddress"
               label="Deployed Contract Address"
-              placeholder="Token Address i.e. 0xa9cb55d05d3351dcd02dd5dc4614e764ce3e1d6e"
+              placeholder="Contract Address i.e. 0xa9cb55d05d3351dcd02dd5dc4614e764ce3e1d6e"
               required
               autoFocus
               data-cy="tokenAddress"

@@ -12,16 +12,8 @@ export const Home = () => {
 
   return (
     <Row>
-      <Col md="3" className="pad">
-        <a href="https://prod.consensys-lootbox.mondorobot.com/">
-          <img src="content/images/lootbox.png" alt="Logo"/>
-        </a>
-      </Col>
-      <Col md="9">
-        <Link to="/nftmetadata"><h3>NFT Metadata by Collection Address</h3></Link>
-        <br/>
-        <Link to="/nftbyaddress"><h3>NFT Owned by Account Address</h3></Link>
-        <br/>
+      <Col md="12" className="pad">
+        This reference application demonstrates the usage of the Infura NFT API.  Use the navbar to interact with the NFT API using REST API endpoints or the Typescript SDK.
       </Col>
     </Row>
   );
