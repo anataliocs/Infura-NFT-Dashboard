@@ -15,7 +15,7 @@ Have other use-cases you'd like to see?  Open up an [issue on Github!](https://g
 
 Check out these resources for more information:
 
-- [Infura NFT API Promo Video](https://youtu.be/ERV_FbCDBIQ)
+- [Hands-On coding with the Infura NFT API & SDK](https://www.youtube.com/watch?v=FrR9bF6S_fg)
 - [Infura NFT API Swagger docs](https://docs.api.infura.io/nft/)
 - [Infura Web Site](https://infura.io/use-cases/nft)
 - [Sample Reference App](https://github.com/anataliocs/Infura-NFT-Dashboard)
