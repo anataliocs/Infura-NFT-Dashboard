@@ -26,7 +26,7 @@ public class InfuraConfig {
     @Bean
     public MappingJackson2HttpMessageConverter messageConverter() {
         MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
-        converter.setSupportedMediaTypes(Arrays.asList(MediaType.TEXT_PLAIN, new MediaType(MediaType.TEXT_PLAIN, defaultCharset())));
+        converter.setSupportedMediaTypes(Arrays.asList(MediaType.TEXT_PLAIN, new MediaType(MediaType.TEXT_PLAIN, defaultCharset()), new MediaType(MediaType.APPLICATION_JSON)));
 
         return converter;
     }
